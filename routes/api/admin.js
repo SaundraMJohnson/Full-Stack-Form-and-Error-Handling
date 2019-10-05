@@ -30,10 +30,11 @@ router.post('/login', (req, res, next) => {
     Admin.findOne({email}, (err, admin) => {
         if(err) return res.json({success: false, err});
         if(!admin) return res.json({success: false, msg: "Admin not registered, please register"});
-        if(!user.validatePassword(pass)) return res.json({success: false, msg: "Invalid password"});
+        if(!admin.validatePassword(pass)) return res.json({success: false, msg: "Invalid password"});
         // Generate token for user.
-        var token = jwt.sign({adminId: admin._id}, process.env.secret);
+        var token = jwt.sign({adminId: admin._id}, 'You cant see me!');
         return res.json({success: true, admin, token, msg: 'Successful Login'});
     });
 });
 
+module.exports = router;

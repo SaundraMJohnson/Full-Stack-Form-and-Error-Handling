@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 exports.verifyToken = function(req, res, next) {
     let token = req.headers.authorization || "";
     if(token) {
-        jwt.verify(token, process.env.secret, function(err, decoded) {
+        jwt.verify(token, 'You cant see me!', function(err, decoded) {
             if(err) return res.json({err});
             req.userId = decoded.userId;
             next();

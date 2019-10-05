@@ -2,29 +2,35 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var Schema = mongoose.Schema;
 
-var adminSchema = new Schema({
-    adminName: {
+var formSchema = new Schema({
+    firstName: {
+        type: String,
+        require: true
+    },
+    lastName: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    password: {
+    occupation: {
         type: String,
-        required: true,
-        minlength: 6
+        required: true
     },
-    profilePicture: {
+    city: {
+        type: String,
+        required: true
+    },
+    bio: {
         type: String,
         required: true
     }
 });
 
 // Hash password for users while registering.
-adminSchema.pre('save', function(next) {
+formSchema.pre('save', function(next) {
     if(this.password) {
         this.password = bcrypt.hashSync(this.password, 10);
     }
@@ -32,9 +38,9 @@ adminSchema.pre('save', function(next) {
 });
 
 // Hash password while comparing at the time of login.
-adminSchema.methods.validatePassword = function(password) {
+formSchema.methods.validatePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-var Admin = mongoose.model('Admin', adminSchema);
-module.exports = Admin;
+var Form = mongoose.model('Form', formSchema);
+module.exports = Form;
