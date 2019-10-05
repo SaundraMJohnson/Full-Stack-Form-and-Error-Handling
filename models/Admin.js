@@ -16,6 +16,10 @@ var adminSchema = new Schema({
         type: password,
         required: true,
         minlength: 6
+    },
+    profilePicture: {
+        type: String,
+        required: true
     }
 });
 
