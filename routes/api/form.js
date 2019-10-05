@@ -1,6 +1,5 @@
 var express = require('express');
 var Form = require('../../models/Form');
-var jwt = require('jsonwebtoken');
 var authToken = require('../../modules/verifyToken');
 var router = express.Router();
 

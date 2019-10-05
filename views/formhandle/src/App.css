@@ -20,3 +20,23 @@
 .App-link {
   color: #09d3ac;
 }
+
+
+.userForm {
+  width: 50%;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.userForm input {
+  width: 100%;
+  margin: 5px;
+  padding: 15px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  outline: none;
+}
+
+.userForm input:focus {
+  border: 2px solid lightblue;
+}

@@ -29,18 +29,5 @@ var formSchema = new Schema({
     }
 });
 
-// Hash password for users while registering.
-formSchema.pre('save', function(next) {
-    if(this.password) {
-        this.password = bcrypt.hashSync(this.password, 10);
-    }
-    next();
-});
-
-// Hash password while comparing at the time of login.
-formSchema.methods.validatePassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-};
-
 var Form = mongoose.model('Form', formSchema);
 module.exports = Form;
