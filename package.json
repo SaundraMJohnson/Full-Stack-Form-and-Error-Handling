@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "client": "npm start --prefix views/formhandle",
+    "client": "npm start --prefix client/formhandle",
     "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "dependencies": {
